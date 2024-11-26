@@ -2,7 +2,7 @@ SRCDIR ?= src
 BUILDDIR = build
 
 CXX = g++
-CXXFLAGS = -std=c++17 -O2 -march=native -pthread
+CXXFLAGS = -std=c++17 -O2 -march=native
 
 SRCS = $(wildcard $(SRCDIR)/*.cpp)
 OBJS = $(patsubst $(SRCDIR)/%.cpp,$(BUILDDIR)/%.o,$(SRCS))

@@ -15,11 +15,11 @@ class scp_instance {
     std::vector<double> w; // weights (costs) of columns
     std::vector<std::set<int>> S; // vector of sets. set 's' on position 'n' means that
                                   // n-th row is covered by columns in 's'
-    bool read_file(char* fname);
+    bool read_file(char* fname, bool force_unicost);
 };
 
 
-inline bool scp_instance::read_file(char* fname){
+inline bool scp_instance::read_file(char* fname, bool force_unicost){
     
     std::ifstream input_file(fname);
 
@@ -36,7 +36,11 @@ inline bool scp_instance::read_file(char* fname){
     S.resize(rows);
 
     for (i = 0; i < cols; ++i) {
-        input_file >> w[i];
+        if (force_unicost) {
+            w[i] = 1;
+        } else {
+            input_file >> w[i];
+        }
     }
 
     for (i = 0; i < rows; ++i) {

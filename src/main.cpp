@@ -23,11 +23,11 @@ int main (int argc, char* argv []) {
     char* inst_fname = argv[1];
     
     scp_instance inst;
-    if (inst.read_file(inst_fname)) {
+    if (inst.read_file(inst_fname, false)) {
         std::cout << "INF: Reading successful. Instance with " << inst.rows << " rows and " << inst.cols << " columns loaded" << std::endl;
     }
     else {
-        std::cout << "ERR: Could not open file at " << inst_fname << ". Maybe it does not exist, or is somewhere else" << std::endl;
+        std::cout << "ERR: Could not open file at '" << inst_fname << "'. Maybe it does not exist, or is somewhere else" << std::endl;
         return 0;
     }
 
